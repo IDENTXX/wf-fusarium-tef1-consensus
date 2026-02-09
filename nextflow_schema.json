@@ -1,40 +1,41 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://github.com/IDENTXX/wf-fusarium-tef1-consensus/blob/main/nextflow_schema.json",
+  "$id": "https://raw.githubusercontent.com/IDENTXX/wf-fusarium-tef1-consensus/main/nextflow_schema.json",
   "title": "Fusarium Consensus Workflow",
-  "description": "Analyse-Workflow für TEF1 Metabarcoding",
+  "workflow_title": "Fusarium TEF1 Consensus",
+  "description": "Workflow for TEF1 Consensus Calling using identxx toolbox",
+  "url": "https://github.com/IDENTXX/wf-fusarium-tef1-consensus",
   "type": "object",
   "definitions": {
     "inputs": {
-      "title": "Input Dateien",
+      "title": "Input Options",
       "type": "object",
       "fa_icon": "fas fa-folder-open",
       "properties": {
         "reads": {
           "type": "string",
           "format": "directory-path",
-          "title": "Reads Ordner",
-          "description": "Wähle den Ordner mit den FastQ-Dateien"
+          "title": "Reads Directory",
+          "description": "Ordner mit FastQ Dateien"
         },
         "db_fasta": {
           "type": "string",
           "format": "file-path",
-          "title": "Referenz-Datenbank (Fasta)",
-          "description": "Wähle die Fasta-Datei"
+          "title": "Reference Database",
+          "description": "FASTA Datei"
         }
       },
       "required": ["reads", "db_fasta"]
     },
     "settings": {
-      "title": "Einstellungen",
+      "title": "Analysis Settings",
       "type": "object",
       "fa_icon": "fas fa-cogs",
       "properties": {
         "min_q": { "type": "integer", "default": 9, "title": "Min Quality" },
         "min_len": { "type": "integer", "default": 300, "title": "Min Length" },
-        "max_len": { "type": "integer", "default": 1200, "title": "Max Length" },
-        "cluster_id": { "type": "number", "default": 0.90, "title": "Cluster Identity (0.90)" },
-        "blast_topn": { "type": "integer", "default": 5, "title": "BLAST Hits" }
+        "primer_fwd": { "type": "string", "default": "", "title": "Forward Primer" },
+        "primer_rev": { "type": "string", "default": "", "title": "Reverse Primer" }
       }
     }
   },
