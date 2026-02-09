@@ -15,20 +15,12 @@
           "type": "string",
           "format": "directory-path",
           "title": "Reads Ordner",
-          "description": "Ordner, der die FastQ-Dateien enthält (Unterordner werden erkannt).",
-          "help_text": "Wähle den Ordner aus, in dem deine Proben liegen."
+          "description": "Ordner mit FastQ-Dateien"
         },
         "db_fasta": {
           "type": "string",
           "format": "file-path",
-          "title": "Referenz Datenbank (Fasta)",
-          "description": "Die Fasta-Datei mit den Referenzsequenzen.",
-          "help_text": "Pfad zur .fasta Datei"
-        },
-        "out_dir": {
-          "type": "string",
-          "default": "output",
-          "title": "Output Ordner Name"
+          "title": "Referenz Datenbank (Fasta)"
         }
       },
       "required": ["reads", "db_fasta"]
@@ -38,23 +30,9 @@
       "type": "object",
       "fa_icon": "fas fa-cut",
       "properties": {
-        "primer_fwd": {
-          "type": "string",
-          "title": "Forward Primer",
-          "default": "",
-          "description": "Sequenz des Vorwärts-Primers (optional)"
-        },
-        "primer_rev": {
-          "type": "string",
-          "title": "Reverse Primer",
-          "default": "",
-          "description": "Sequenz des Rückwärts-Primers (optional)"
-        },
-        "trim_error_rate": {
-          "type": "number",
-          "default": 0.12,
-          "title": "Error Rate (Cutadapt)"
-        }
+        "primer_fwd": { "type": "string", "title": "Forward Primer", "default": "" },
+        "primer_rev": { "type": "string", "title": "Reverse Primer", "default": "" },
+        "trim_error_rate": { "type": "number", "default": 0.12, "title": "Error Rate" }
       }
     },
     "filters": {
@@ -62,21 +40,9 @@
       "type": "object",
       "fa_icon": "fas fa-filter",
       "properties": {
-        "min_q": {
-          "type": "integer",
-          "default": 9,
-          "title": "Min Quality (Q-Score)"
-        },
-        "min_len": {
-          "type": "integer",
-          "default": 300,
-          "title": "Min Länge (bp)"
-        },
-        "max_len": {
-          "type": "integer",
-          "default": 1200,
-          "title": "Max Länge (bp)"
-        }
+        "min_q": { "type": "integer", "default": 9, "title": "Min Quality" },
+        "min_len": { "type": "integer", "default": 300, "title": "Min Länge" },
+        "max_len": { "type": "integer", "default": 1200, "title": "Max Länge" }
       }
     },
     "clustering": {
@@ -84,21 +50,9 @@
       "type": "object",
       "fa_icon": "fas fa-dna",
       "properties": {
-        "cluster_id": {
-          "type": "number",
-          "default": 0.90,
-          "title": "Cluster Identity (0.90 = 90%)"
-        },
-        "min_cluster_reads": {
-          "type": "integer",
-          "default": 20,
-          "title": "Min Reads pro Cluster"
-        },
-        "blast_topn": {
-          "type": "integer",
-          "default": 5,
-          "title": "Anzahl BLAST Treffer"
-        }
+        "cluster_id": { "type": "number", "default": 0.90, "title": "Cluster Identity" },
+        "min_cluster_reads": { "type": "integer", "default": 20, "title": "Min Reads" },
+        "blast_topn": { "type": "integer", "default": 5, "title": "BLAST Hits" }
       }
     }
   },
