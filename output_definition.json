@@ -1,0 +1,36 @@
+{
+  "files": {
+    "workflow-report": {
+      "filepath": "wf-fusarium-tef1-report.html",
+      "title": "Workflow Report (HTML)",
+      "description": "Zusammenfassung und Matrix.",
+      "mime-type": "text/html",
+      "optional": false,
+      "type": "aggregated"
+    },
+    "abundance-matrix": {
+      "filepath": "summary/abundance_matrix.csv",
+      "title": "Abundance Matrix (CSV)",
+      "description": "Tabelle: Sample x Species.",
+      "mime-type": "text/csv",
+      "optional": false,
+      "type": "aggregated"
+    },
+    "consensus-seqs": {
+      "filepath": "per_sample/{{ alias }}/clusters/{{ alias }}.cons.fasta",
+      "title": "Consensus Sequences (Fasta)",
+      "description": "Polierte Sequenzen (Consensus) der Cluster.",
+      "mime-type": "text/plain",
+      "optional": false,
+      "type": "per-sample"
+    },
+    "taxonomy-tsv": {
+      "filepath": "per_sample/{{ alias }}/taxonomy/{{ alias }}.taxonomy.tsv",
+      "title": "Taxonomy & Counts",
+      "description": "Cluster ID mit bestem BLAST Hit.",
+      "mime-type": "text/tab-separated-values",
+      "optional": false,
+      "type": "per-sample"
+    }
+  }
+}
