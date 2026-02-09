@@ -3,7 +3,7 @@
   "$id": "https://raw.githubusercontent.com/IDENTXX/wf-fusarium-tef1-consensus/main/nextflow_schema.json",
   "title": "Fusarium Consensus Workflow",
   "workflow_title": "Fusarium TEF1 Consensus",
-  "description": "Workflow for TEF1 Consensus Calling using identxx toolbox",
+  "description": "Workflow for TEF1 Consensus Calling",
   "url": "https://github.com/IDENTXX/wf-fusarium-tef1-consensus",
   "type": "object",
   "definitions": {
@@ -14,28 +14,26 @@
       "properties": {
         "reads": {
           "type": "string",
-          "format": "directory-path",
+          "format": "path",
           "title": "Reads Directory",
-          "description": "Ordner mit FastQ Dateien"
+          "description": "Ordner mit FastQ Dateien auswählen"
         },
         "db_fasta": {
           "type": "string",
           "format": "file-path",
           "title": "Reference Database",
-          "description": "FASTA Datei"
+          "description": "FASTA Datei auswählen"
         }
       },
       "required": ["reads", "db_fasta"]
     },
     "settings": {
-      "title": "Analysis Settings",
+      "title": "Settings",
       "type": "object",
       "fa_icon": "fas fa-cogs",
       "properties": {
         "min_q": { "type": "integer", "default": 9, "title": "Min Quality" },
-        "min_len": { "type": "integer", "default": 300, "title": "Min Length" },
-        "primer_fwd": { "type": "string", "default": "", "title": "Forward Primer" },
-        "primer_rev": { "type": "string", "default": "", "title": "Reverse Primer" }
+        "primer_fwd": { "type": "string", "default": "", "title": "Forward Primer" }
       }
     }
   },
