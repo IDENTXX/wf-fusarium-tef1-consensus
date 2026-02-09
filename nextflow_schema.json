@@ -2,43 +2,28 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://raw.githubusercontent.com/IDENTXX/wf-fusarium-tef1-consensus/main/nextflow_schema.json",
   "title": "Fusarium Consensus Workflow",
-  "workflow_title": "Fusarium TEF1 Consensus",
   "description": "Workflow for TEF1 Consensus Calling",
-  "url": "https://github.com/IDENTXX/wf-fusarium-tef1-consensus",
   "type": "object",
   "definitions": {
-    "inputs": {
-      "title": "Input Options",
+    "input_files": {
+      "title": "Input Parameters",
       "type": "object",
-      "fa_icon": "fas fa-folder-open",
       "properties": {
         "reads": {
           "type": "string",
           "format": "path",
-          "title": "Reads Directory",
-          "description": "Ordner mit FastQ Dateien auswählen"
+          "title": "Reads Directory"
         },
         "db_fasta": {
           "type": "string",
-          "format": "file-path",
-          "title": "Reference Database",
-          "description": "FASTA Datei auswählen"
+          "format": "path",
+          "title": "Database Fasta"
         }
       },
       "required": ["reads", "db_fasta"]
-    },
-    "settings": {
-      "title": "Settings",
-      "type": "object",
-      "fa_icon": "fas fa-cogs",
-      "properties": {
-        "min_q": { "type": "integer", "default": 9, "title": "Min Quality" },
-        "primer_fwd": { "type": "string", "default": "", "title": "Forward Primer" }
-      }
     }
   },
   "allOf": [
-    { "$ref": "#/definitions/inputs" },
-    { "$ref": "#/definitions/settings" }
+    { "$ref": "#/definitions/input_files" }
   ]
 }
