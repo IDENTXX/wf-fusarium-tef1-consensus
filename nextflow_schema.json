@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://github.com/IDENTXX/wf-fusarium-tef1-consensus/blob/main/nextflow_schema.json",
+  "title": "Fusarium Analysis",
+  "type": "object",
+  "definitions": {
+    "input_files": {
+      "title": "Input",
+      "type": "object",
+      "properties": {
+        "reads": {
+          "type": "string",
+          "format": "path",
+          "description": "Ordner mit FastQ Dateien"
+        },
+        "db_fasta": {
+          "type": "string",
+          "format": "path",
+          "description": "Referenz Datenbank (Fasta)"
+        }
+      },
+      "required": ["reads", "db_fasta"]
+    }
+  },
+  "allOf": [
+    { "$ref": "#/definitions/input_files" }
+  ]
+}
