@@ -5,47 +5,41 @@
   "description": "Analyse-Workflow für TEF1 Metabarcoding",
   "type": "object",
   "definitions": {
-    "input_output": {
-      "title": "Input & Output",
+    "inputs": {
+      "title": "Input Dateien",
       "type": "object",
-      "fa_icon": "fas fa-plug",
+      "fa_icon": "fas fa-folder-open",
       "properties": {
         "reads": {
           "type": "string",
           "format": "directory-path",
-          "title": "Reads Directory",
-          "description": "Ordner mit den FastQ Dateien (werden automatisch erkannt)",
-          "fa_icon": "fas fa-folder-open"
+          "title": "Reads Ordner",
+          "description": "Wähle den Ordner mit den FastQ-Dateien"
         },
         "db_fasta": {
           "type": "string",
           "format": "file-path",
-          "title": "Referenz Datenbank (Fasta)",
-          "description": "Die Fasta-Datei mit den Referenzsequenzen",
-          "fa_icon": "fas fa-database"
-        },
-        "out_dir": {
-          "type": "string",
-          "default": "output",
-          "title": "Output Ordner Name"
+          "title": "Referenz-Datenbank (Fasta)",
+          "description": "Wähle die Fasta-Datei"
         }
       },
       "required": ["reads", "db_fasta"]
     },
-    "advanced": {
-      "title": "Erweiterte Einstellungen",
+    "settings": {
+      "title": "Einstellungen",
       "type": "object",
       "fa_icon": "fas fa-cogs",
       "properties": {
         "min_q": { "type": "integer", "default": 9, "title": "Min Quality" },
         "min_len": { "type": "integer", "default": 300, "title": "Min Length" },
         "max_len": { "type": "integer", "default": 1200, "title": "Max Length" },
-        "blast_topn": { "type": "integer", "default": 5, "title": "BLAST Top Hits" }
+        "cluster_id": { "type": "number", "default": 0.90, "title": "Cluster Identity (0.90)" },
+        "blast_topn": { "type": "integer", "default": 5, "title": "BLAST Hits" }
       }
     }
   },
   "allOf": [
-    { "$ref": "#/definitions/input_output" },
-    { "$ref": "#/definitions/advanced" }
+    { "$ref": "#/definitions/inputs" },
+    { "$ref": "#/definitions/settings" }
   ]
 }
