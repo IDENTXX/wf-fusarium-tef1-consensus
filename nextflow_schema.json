@@ -1,1 +1,111 @@
-{}
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/IDENTXX/wf-fusarium-tef1-consensus/main/nextflow_schema.json",
+  "title": "Fusarium Consensus Workflow",
+  "description": "Metabarcoding Analyse für Fusarium TEF1",
+  "url": "https://github.com/IDENTXX/wf-fusarium-tef1-consensus",
+  "type": "object",
+  "definitions": {
+    "input_files": {
+      "title": "Input Dateien",
+      "type": "object",
+      "fa_icon": "fas fa-folder-open",
+      "properties": {
+        "reads": {
+          "type": "string",
+          "format": "directory-path",
+          "title": "Reads Ordner",
+          "description": "Ordner, der die FastQ-Dateien enthält (Unterordner werden erkannt).",
+          "help_text": "Wähle den Ordner aus, in dem deine Proben liegen."
+        },
+        "db_fasta": {
+          "type": "string",
+          "format": "file-path",
+          "title": "Referenz Datenbank (Fasta)",
+          "description": "Die Fasta-Datei mit den Referenzsequenzen.",
+          "help_text": "Pfad zur .fasta Datei"
+        },
+        "out_dir": {
+          "type": "string",
+          "default": "output",
+          "title": "Output Ordner Name"
+        }
+      },
+      "required": ["reads", "db_fasta"]
+    },
+    "primers": {
+      "title": "Primer Trimming",
+      "type": "object",
+      "fa_icon": "fas fa-cut",
+      "properties": {
+        "primer_fwd": {
+          "type": "string",
+          "title": "Forward Primer",
+          "default": "",
+          "description": "Sequenz des Vorwärts-Primers (optional)"
+        },
+        "primer_rev": {
+          "type": "string",
+          "title": "Reverse Primer",
+          "default": "",
+          "description": "Sequenz des Rückwärts-Primers (optional)"
+        },
+        "trim_error_rate": {
+          "type": "number",
+          "default": 0.12,
+          "title": "Error Rate (Cutadapt)"
+        }
+      }
+    },
+    "filters": {
+      "title": "Qualitäts-Filter",
+      "type": "object",
+      "fa_icon": "fas fa-filter",
+      "properties": {
+        "min_q": {
+          "type": "integer",
+          "default": 9,
+          "title": "Min Quality (Q-Score)"
+        },
+        "min_len": {
+          "type": "integer",
+          "default": 300,
+          "title": "Min Länge (bp)"
+        },
+        "max_len": {
+          "type": "integer",
+          "default": 1200,
+          "title": "Max Länge (bp)"
+        }
+      }
+    },
+    "clustering": {
+      "title": "Clustering & BLAST",
+      "type": "object",
+      "fa_icon": "fas fa-dna",
+      "properties": {
+        "cluster_id": {
+          "type": "number",
+          "default": 0.90,
+          "title": "Cluster Identity (0.90 = 90%)"
+        },
+        "min_cluster_reads": {
+          "type": "integer",
+          "default": 20,
+          "title": "Min Reads pro Cluster"
+        },
+        "blast_topn": {
+          "type": "integer",
+          "default": 5,
+          "title": "Anzahl BLAST Treffer"
+        }
+      }
+    }
+  },
+  "allOf": [
+    { "$ref": "#/definitions/input_files" },
+    { "$ref": "#/definitions/primers" },
+    { "$ref": "#/definitions/filters" },
+    { "$ref": "#/definitions/clustering" }
+  ]
+}
