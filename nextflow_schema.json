@@ -2,21 +2,22 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://github.com/IDENTXX/wf-fusarium-tef1-consensus/blob/main/nextflow_schema.json",
   "title": "Fusarium Consensus Workflow",
+  "description": "Workflow for TEF1 Consensus Calling",
   "type": "object",
   "definitions": {
     "input_files": {
-      "title": "Input Files",
+      "title": "Input Parameters",
       "type": "object",
       "properties": {
         "reads": {
           "type": "string",
-          "format": "directory-path",
-          "title": "Reads Folder (Fastq)"
+          "format": "path",
+          "title": "Reads Directory"
         },
         "db_fasta": {
           "type": "string",
-          "format": "file-path",
-          "title": "Database (Fasta)"
+          "format": "path",
+          "title": "Database Fasta"
         }
       },
       "required": ["reads", "db_fasta"]
