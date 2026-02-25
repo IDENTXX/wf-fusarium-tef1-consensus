@@ -21,9 +21,39 @@
           "type": "string",
           "format": "file-path",
           "title": "Referenz Datenbank (Fasta)"
+        },
+        "out_dir": {
+          "type": "string",
+          "title": "Output Verzeichnis",
+          "default": "output",
+          "fa_icon": "fas fa-folder-plus"
         }
       },
       "required": ["reads", "db_fasta"]
+    },
+    "taxonomy_filter": {
+      "title": "Spezies-Filter (Scharfstellen)",
+      "type": "object",
+      "description": "Hier stellst du ein, wie streng die Bestimmung sein soll.",
+      "fa_icon": "fas fa-microscope",
+      "properties": {
+        "min_identity": {
+          "type": "number",
+          "title": "Min. Identität (%)",
+          "default": 90,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Wie genau muss der Treffer passen? (z.B. 99 für f. sp.)"
+        },
+        "min_coverage": {
+          "type": "number",
+          "title": "Min. Abdeckung (%)",
+          "default": 80,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Wieviel % der Sequenz muss gefunden werden?"
+        }
+      }
     },
     "primers": {
       "title": "Primer Trimming",
@@ -36,7 +66,7 @@
       }
     },
     "filters": {
-      "title": "Qualitäts-Filter",
+      "title": "Qualitäts-Filter (Reads)",
       "type": "object",
       "fa_icon": "fas fa-filter",
       "properties": {
@@ -58,6 +88,7 @@
   },
   "allOf": [
     { "$ref": "#/definitions/input_files" },
+    { "$ref": "#/definitions/taxonomy_filter" },
     { "$ref": "#/definitions/primers" },
     { "$ref": "#/definitions/filters" },
     { "$ref": "#/definitions/clustering" }

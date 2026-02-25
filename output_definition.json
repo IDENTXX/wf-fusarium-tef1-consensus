@@ -4,23 +4,23 @@
     "workflow-report": {
       "filepath": "output/wf-fusarium-tef1-report.html",
       "title": "Hauptbericht (HTML)",
-      "description": "Zusammenfassung",
+      "description": "Zusammenfassung der Analyse",
       "mime-type": "text/html",
+      "optional": false,
+      "type": "aggregated"
+    },
+    "metagenomics-counts": {
+      "filepath": "output/summary/wf-metagenomics-counts-species.csv",
+      "title": "Metagenomics Counts (Final)",
+      "description": "Formatierte Tabelle mit Taxonomie und f. sp. Unterscheidung",
+      "mime-type": "text/csv",
       "optional": false,
       "type": "aggregated"
     },
     "abundance-matrix": {
       "filepath": "output/summary/abundance_matrix.csv",
-      "title": "Abundanz Matrix (CSV)",
-      "description": "Tabelle: Counts",
-      "mime-type": "text/csv",
-      "optional": false,
-      "type": "aggregated"
-    },
-    "all-samples-long": {
-      "filepath": "output/summary/all_samples.long.csv",
-      "title": "Detail-Tabelle (CSV)",
-      "description": "BLAST Details",
+      "title": "Abundanz Matrix (Simple)",
+      "description": "Einfache Übersicht (Spezies x Proben)",
       "mime-type": "text/csv",
       "optional": false,
       "type": "aggregated"
